@@ -1,30 +1,45 @@
-This Fake News Detection System is a Python-based project designed to classify news articles as real or fake. It employs machine learning algorithms and Natural Language Processing (NLP) techniques to preprocess textual data, extract features, and train a classification model. The project provides an end-to-end pipeline, from data preprocessing to making predictions.
+📌 Overview
+The Fake News Detection System is an NLP-based machine learning project that classifies news articles as real or fake.
+It leverages text preprocessing, TF-IDF vectorization, and multiple machine learning models (Logistic Regression & Decision Tree) to achieve high accuracy in detecting misinformation.
 
-Features
-Text Preprocessing:
+🚀 Features
+Text Preprocessing: Removal of punctuation, stopwords, and special characters.
 
-Removal of stopwords, punctuation, and special characters.
-Conversion of text to lowercase.
-Feature Extraction:
+Vectorization: TF-IDF for feature extraction.
 
-Vectorization using TF-IDF (Term Frequency-Inverse Document Frequency) to convert text into numerical form.
-Machine Learning Model:
+Machine Learning Models: Logistic Regression, Decision Tree.
 
-Logistic Regression is used for training the model and classifying news.
-Prediction Interface:
+Performance Metrics: Accuracy, Precision, Recall, F1-score.
 
-Command-line interface for entering news headlines/articles and getting predictions.
-Dataset
-The model is trained and tested using the Fake News Dataset from Kaggle, which contains labeled news data.
+Dataset Handling: Support for large datasets in CSV format.
 
-Columns:
-title: News headline.
-text: Full news content.
-label: Binary value (1 for real news, 0 for fake news).
-You can download the dataset from Kaggle or use your dataset.
+Visualization: Confusion matrix and accuracy plots.
 
-Technologies Used
-Programming Language: Python
-Libraries:
-Data Manipulation: pandas, numpy
-NLP: nltk, sklearn
+🛠 Tech Stack
+Languages & Libraries:
+
+Python
+
+NumPy, Pandas (Data processing)
+
+Scikit-learn (Modeling & evaluation)
+
+Matplotlib, Seaborn (Visualization)
+
+Algorithms:
+
+Logistic Regression
+
+Decision Tree Classifier
+
+fake-news-detection/
+│-- data/
+│   └── train.csv
+│   └── test.csv
+│-- notebooks/
+│   └── Fake_News_Detection.ipynb
+│-- src/
+│   └── preprocessing.py
+│   └── model_training.py
+│-- README.md
+│-- requirements.txt

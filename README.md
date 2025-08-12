@@ -32,6 +32,8 @@ Logistic Regression
 
 Decision Tree Classifier
 
+📂 Project Structure
+
 fake-news-detection/
 │-- data/
 │   └── train.csv

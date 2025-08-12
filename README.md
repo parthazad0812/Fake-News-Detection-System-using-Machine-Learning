@@ -35,13 +35,24 @@ Decision Tree Classifier
 📂 Project Structure
 
 fake-news-detection/
+
 │-- data/
+
 │   └── train.csv
+
 │   └── test.csv
+
 │-- notebooks/
+
 │   └── Fake_News_Detection.ipynb
+
 │-- src/
+
 │   └── preprocessing.py
+
 │   └── model_training.py
+
 │-- README.md
+
 │-- requirements.txt
+

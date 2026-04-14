@@ -1,58 +1,213 @@
-📌 Overview
-The Fake News Detection System is an NLP-based machine learning project that classifies news articles as real or fake.
-It leverages text preprocessing, TF-IDF vectorization, and multiple machine learning models (Logistic Regression & Decision Tree) to achieve high accuracy in detecting misinformation.
+# 🧠 Fake News Detection System (ML + RAG + LLM)
 
-🚀 Features
-Text Preprocessing: Removal of punctuation, stopwords, and special characters.
+An **end-to-end Fake News Detection System implemented in a single notebook**, combining **Machine Learning, Retrieval-Augmented Generation (RAG), and LLM (Gemini)** to provide accurate and explainable predictions.
 
-Vectorization: TF-IDF for feature extraction.
+---
 
-Machine Learning Models: Logistic Regression, Decision Tree.
+## 🚀 Overview
 
-Performance Metrics: Accuracy, Precision, Recall, F1-score.
+This project detects whether a news article is **Fake or Real** and enhances predictions using:
 
-Dataset Handling: Support for large datasets in CSV format.
+* ✅ LSTM-based Deep Learning model
+* ✅ RAG pipeline (FAISS + embeddings)
+* ✅ Gemini LLM for explanation and validation
+* ✅ Confidence calibration for reliability
 
-Visualization: Confusion matrix and accuracy plots.
+---
 
-🛠 Tech Stack
-Languages & Libraries:
+## 🏗️ Pipeline Architecture
 
-Python
+```text
+User Input
+   ↓
+LSTM Model → Prediction + Confidence
+   ↓
+FAISS → Retrieve Similar News (RAG)
+   ↓
+Gemini → Explanation
+   ↓
+Gemini → Validation
+   ↓
+Gemini → Confidence Calibration
+   ↓
+Final Output
+```
 
-NumPy, Pandas (Data processing)
+---
 
-Scikit-learn (Modeling & evaluation)
+## ⚙️ Tech Stack
 
-Matplotlib, Seaborn (Visualization)
+* **Python**
+* **PySpark** (data processing)
+* **TensorFlow / Keras (LSTM)**
+* **FAISS (Vector Search)**
+* **Sentence Transformers (Embeddings)**
+* **Google Gemini API (LLM)**
+* **Matplotlib, Seaborn, WordCloud (Visualization)**
 
-Algorithms:
+---
 
-Logistic Regression
+## 📓 Notebook Structure
 
-Decision Tree Classifier
+All code is implemented in a **single notebook**, divided into logical sections:
 
-📂 Project Structure
+### 1️⃣ Setup & Configuration
 
-fake-news-detection/
+* Library installation
+* Spark session setup
+* Config dictionary
 
-│-- data/
+---
 
-│   └── train.csv
+### 2️⃣ Data Ingestion (Bronze)
 
-│   └── test.csv
+* Load dataset (Fake.csv, True.csv)
+* Add labels (Fake = 0, Real = 1)
+* Store as parquet
 
-│-- notebooks/
+---
 
-│   └── Fake_News_Detection.ipynb
+### 3️⃣ Data Cleaning (Silver)
 
-│-- src/
+* Remove null values
+* Merge title + text
+* Text preprocessing:
 
-│   └── preprocessing.py
+  * Lowercasing
+  * Regex cleaning
+  * Stopword removal
+  * Lemmatization
 
-│   └── model_training.py
+---
 
-│-- README.md
+### 4️⃣ Feature Engineering
 
-│-- requirements.txt
+* Text length
+* Word count
+* Vocabulary richness
+* Stopword ratio
+* Visualizations:
 
+  * Histogram
+  * Correlation heatmap
+  * WordCloud
+
+---
+
+### 5️⃣ Machine Learning Model (LSTM)
+
+* Tokenization & padding
+* Bidirectional LSTM model
+* Training & evaluation
+* Accuracy: **~90–94%**
+
+---
+
+### 6️⃣ RAG Pipeline
+
+* Generate embeddings using SentenceTransformer
+* Store embeddings in FAISS
+* Retrieve top-k similar documents
+
+---
+
+### 7️⃣ LLM Layer (Gemini)
+
+* Explanation generation
+* Prediction validation
+* Confidence calibration
+
+---
+
+### 8️⃣ Final Pipeline
+
+```python
+result = full_pipeline_advanced("Sample news text")
+```
+
+Output includes:
+
+* Prediction
+* Confidence
+* Explanation
+* Validation
+* Confidence analysis
+
+---
+
+## 📊 Results
+
+* Accuracy: **~90–94%**
+* Improved explainability using RAG + LLM
+* More reliable predictions using validation layer
+
+### Example Output:
+
+```text
+Prediction: Fake
+Confidence: 0.87
+
+Explanation:
+The claims contradict verified sources retrieved from dataset...
+
+Validation:
+INVALID: The claim is inconsistent with contextual evidence.
+
+Confidence Analysis:
+Adjusted Confidence: 0.65
+```
+
+---
+
+## 📌 Dataset
+
+Kaggle Fake News Dataset:
+https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset
+
+---
+
+## ▶️ How to Run
+
+1. Open the notebook in **Google Colab**
+2. Install dependencies:
+
+```bash
+pip install pyspark tensorflow langchain faiss-cpu sentence-transformers google-generativeai nltk wordcloud matplotlib seaborn
+```
+
+3. Add your Gemini API key:
+
+```python
+GENAI_API_KEY = "your_api_key_here"
+```
+
+4. Run all cells sequentially
+
+---
+
+## 🌱 Future Improvements
+
+* Deploy on Databricks
+* Build API using FastAPI
+* Use Transformer models (BERT)
+* Improve RAG with advanced vector DB
+
+---
+
+## 🎯 Key Learnings
+
+* End-to-end AI pipeline design
+* Integration of ML + RAG + LLM
+* Prompt engineering & explainable AI
+* Data preprocessing using PySpark
+
+---
+
+## 👤 Author
+
+**Parth Azad**
+Aspiring Data Engineer & AI/ML Engineer
+
+---
+
+⭐ Star this repo if you found it useful!
